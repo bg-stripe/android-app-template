@@ -11,10 +11,20 @@ import retrofit2.http.POST
 interface BackendService {
 
     /**
-     * POST to an endpoint with a string
+     * Get a ConnectionToken secret from the backend
+     */
+    @POST("/connection_token")
+    fun getConnectionToken(): Call<ConnectionToken>
+
+    /**
+     * Capture a PaymentIntent on our backend
      */
     @FormUrlEncoded
-    @POST("/my_endpoint")
-    fun someMethod(@Field("some_id") id: String): Call<Void>
+    @POST("/capture_payment_intent")
+    fun capturePaymentIntent(@Field("payment_intent_id") id: String): Call<Void>
 }
 
+/**
+ * A one-field data class used to handle the ConnectionToken response from our backend
+ */
+data class ConnectionToken(val secret: String)
