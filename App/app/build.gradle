@@ -20,10 +20,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 ext {
-    okhttpVersion = '3.11.0'
+    okhttpVersion = '3.14.1'
     retrofitVersion = '2.5.0'
 }
 
@@ -31,7 +35,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'androidx.core:core-ktx:1.1.0-alpha05'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     implementation 'com.google.android.material:material:1.0.0-beta01'
     testImplementation 'junit:junit:4.12'
@@ -40,6 +43,8 @@ dependencies {
 
     // OK HTTP
     implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+
+    implementation "com.stripe:stripeterminal:1.0.0-b3"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
